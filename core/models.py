@@ -34,3 +34,17 @@ class Code(models.Model):
         res = super().save(*args,**kwargs)
         return res
     #python manage.py shell
+
+
+class Solution(models.Model):
+    text = models.TextField(default="", blank=True)
+    score = models.FloatField(default=0.0)
+    log = models.TextField(default="", blank=True)
+
+class Homework(models.Model):
+    fairy_tale = models.TextField(default="", blank=True)
+
+class Example(models.Model):
+    hw = models.ForeignKey(Homework, on_delete=models.CASCADE)
+    input = models.TextField(default="", blank=True)
+    output = models.TextField(default="", blank=True)
